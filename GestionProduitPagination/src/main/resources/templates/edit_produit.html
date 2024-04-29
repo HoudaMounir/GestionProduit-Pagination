@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Ajouter produit</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+th:href="@{css/bootstrap.min.css}"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav mr-auto"> <!-- Added mr-auto class here -->
+            <li class="nav-item"><a class="nav-link" th:href="@{/index}">Chercher</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/form}">AjouterProduit</a></li>
+        </ul>
+    </div>
+</div>
+
+	
+	
+	
+<div class="container mt-5">
+	<div class="panel panel-default">
+		<div class="panel-heading"> Saisie du produit:</div>
+		<div class="panel-body">
+			<form  method="post" th:action="@{ajout}" >
+				<div class="form-group">
+			        <label>ID:</label>
+			        <input type="text" class="form-control" name="id" th:value="${produit.isPresent() ? produit.get().id : ''}">
+			   	</div>
+				<div class="form-group">
+			        <label>Designation:</label>
+			        <input type="text" class="form-control" name="desigantion" th:value="${produit.isPresent() ? produit.get().desigantion : ''}">
+					<span class="text-danger" th:errors="${produit.desigantion}"></span>		   		
+		   		</div>
+			    <div class="form-group">
+			        <label>Prix:</label>
+			        <input type="number" class="form-control" name="prix" th:value="${produit.isPresent() ? produit.get().prix : ''}">
+			    	<span class="text-danger" th:errors="${produit.prix}"></span>
+			    </div>
+			    <div class="form-group">
+			        <label>Quantite:</label>
+			        <input type="number" class="form-control" name="quantite" th:value="${produit.isPresent() ? produit.get().quantite : ''}">
+			   		<span class="text-danger" th:errors="${produit.quantite}"></span>
+			    </div>
+				<button class="btn btn-primary" type="submit">Modifier</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<footer class="navbar-fixed-bottom" style="position: fixed; bottom: 0; width: 100%;">
+    <hr/>
+    <div class="container">
+        <small>Copyright @2024</small>
+    </div>
+</footer>
+</body>
+</html>
